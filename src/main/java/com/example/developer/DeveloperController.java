@@ -21,7 +21,7 @@ public class DeveloperController {
     @PostMapping(path="/developers")
     public String  newEmployee(@RequestBody Developer dev){
         employeeRepository.save(dev);
-        return "Developer is created succesfully";
+        return "Developer is created successfully";
     }
     @PutMapping(path="/developers/{id}")
     public String replaceEmployee(@RequestBody Developer newEmployee, @PathVariable Long id) throws DeveloperNotFoundException {
@@ -30,12 +30,12 @@ public class DeveloperController {
         dev.setName(newEmployee.getName());
         dev.setSkills(newEmployee.getSkills());
         employeeRepository.save(dev);
-        return "Developer is updated succesfully";
+        return "Developer is updated successfully";
     }
     @DeleteMapping(path="/developers/{id}")
     public String deleteEmployee(@PathVariable Long id) throws DeveloperNotFoundException {
         Developer dev= employeeRepository.findById(id).orElseThrow(()->new DeveloperNotFoundException(id));
         employeeRepository.delete(dev);
-        return "Developer is deleted succesfully";
+        return "Developer is deleted successfully";
     }
 }
